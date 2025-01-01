@@ -1,0 +1,35 @@
+class Teacher extends Person:
+    attributes:
+        - specialty: string
+        - degree: string
+        - isFullTime: boolean
+        - isPartTime: boolean
+        - hoursWorked: integer
+
+    method ComputePayRoll():
+        if isFullTime:
+            return (32 * degreeRate(degree) * 2 * 0.85)
+        else if isPartTime:
+            return (hoursWorked * degreeRate(degree) * 2 * 0.76)
+        else:
+            return 0
+
+    method degreeRate(degree):
+        switch degree.toLowerCase():
+            case "phd":
+                return 112
+            case "master":
+                return 82
+            case "bachelor":
+                return 42
+            default:
+                return 0
+
+class Staff extends Person:
+    attributes:
+        - duty: string
+        - workload: integer
+
+    method ComputePayRoll():
+        return (workload * 32 * 2) * 0.75
+
